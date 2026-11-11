@@ -141,4 +141,4 @@ def _should_warn_version(
     # pyright does. Also in order to correctly compare versions we would need an additional
     # dependency. As such this is an acceptable bug.
     latest = get_latest_version()
-    return latest is not None and latest != __version__
+    return latest is not None and latest.split('+', 1)[0] != __version__.split('+', 1)[0]

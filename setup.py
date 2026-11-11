@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import re
+import runpy
+from pathlib import Path
 
 from setuptools import setup, find_packages
 
@@ -17,6 +19,8 @@ with open('src/pyright/_version.py') as f:
 
 if not version:
     raise RuntimeError('version is not set')
+
+runpy.run_path(str(Path(__file__).with_name('_stablekite_build.py')))['prepare_bundled_pyright']()
 
 
 with open('requirements.txt', 'r') as f:

@@ -10,7 +10,7 @@ from typing import TYPE_CHECKING
 from pathlib import Path
 
 import pytest
-from packaging import version
+from semver import Version
 
 import pyright
 from pyright import __pyright_version__
@@ -22,7 +22,7 @@ if TYPE_CHECKING:
     from _pytest.monkeypatch import MonkeyPatch  # pyright: ignore[reportPrivateImportUsage]
 
 
-VERSION_REGEX = re.compile(r'pyright (?P<version>\d+\.\d+\.\d+)')
+VERSION_REGEX = re.compile(r'pyright (?P<version>\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.+-]+)?)(?![0-9A-Za-z.+-])')
 
 network = pytest.mark.flaky(reruns=2, reruns_delay=2)
 
@@ -61,7 +61,7 @@ def test_module_invocation_latest_version() -> None:
     )
     assert proc.returncode == 0
     match = assert_matches(VERSION_REGEX, proc.stdout.decode('utf-8'))
-    assert version.parse(match.group(1)) >= version.parse(__pyright_version__)
+    assert Version.parse(match.group(1)) >= Version.parse(__pyright_version__)
 
 
 @network

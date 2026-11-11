@@ -1,2 +1,6 @@
 include README.md
 include requirements.txt
+include _stablekite_build.py
+include vendor/PYRIGHT_NODE.json
+include vendor/*.tgz
+recursive-include src/pyright/dist *

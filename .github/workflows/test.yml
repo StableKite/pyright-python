@@ -107,10 +107,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
+      - name: Build legacy lint Python natively on Ubuntu
+        shell: bash
+        env:
+          PYENV_ROOT: ${{ runner.temp }}/stablekite-pyenv-lint
+        run: |
+          uname -a
+          git clone --no-checkout https://github.com/pyenv/pyenv.git "$PYENV_ROOT"
+          git -C "$PYENV_ROOT" checkout --detach 03ffc48ef3cd33808899773df586f3cc7f74470a
+          test "$(git -C "$PYENV_ROOT" rev-parse HEAD)" = "03ffc48ef3cd33808899773df586f3cc7f74470a"
+          version=$("$PYENV_ROOT/bin/pyenv" latest -k "${{ matrix.python-version }}")
+          echo "legacy_lint_python_source_version=$version"
+          shasum -a 256 "$PYENV_ROOT/plugins/python-build/share/python-build/$version"
+          "$PYENV_ROOT/bin/pyenv" install "$version"
+          "$PYENV_ROOT/versions/$version/bin/python" -c "import sys,platform; print(sys.version); print(platform.platform()); print(platform.machine())"
+          echo "$PYENV_ROOT/versions/$version/bin" >> "$GITHUB_PATH"
 
       - name: Install dependencies
         run: |

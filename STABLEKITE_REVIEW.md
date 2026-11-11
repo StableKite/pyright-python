@@ -1,8 +1,9 @@
 # StableKite native type contract review
 
-This branch bundles the source-built Pyright `1.1.414-stablekite.2` engine
-with precise native ctypes and standard pickle contracts.
-The Python package version is `1.1.414+stablekite.2`.
+This branch bundles the source-built Pyright `1.1.414-stablekite.3` engine
+with nominal metaclass class-object bounds and correct super binding, while
+preserving precise native ctypes and standard pickle contracts.
+The Python package version is `1.1.414+stablekite.3`.
 
 The handler receives the converted Python result, the ctypes function,
 and a tuple of Python arguments. It can return an arbitrary Python object.
@@ -20,11 +21,19 @@ and every bundled file hash. The normal setuptools build verifies this
 archive and includes its files in both wheel and sdist. Normal execution
 uses the bundled engine; no installed SDK file is patched.
 
-The upstream checker engine and original tests are unchanged. The local
-source producer passed the original style checks, workspace typechecks,
-and all 77 Jest suites (2,793 tests), retaining the upstream `--forceExit`
-option and its original process cleanup warnings. Real ctypes callback
-consumers are qualified separately from those checker unit tests.
+The checker engine now validates known nominal metaclass owner bounds,
+looks up super through the metaclass MRO while preserving the class object,
+and rejects invalid custom getter binding. Broad Enum bounds that do not
+guarantee the custom metaclass remain rejected. The producer implementation
+returning super().__getitem__(key.upper()) is unchanged.
+
+All original Pyright tests and expectations are unchanged. Five new tests
+cover exact return types, inherited and incompatible owners, zero-argument
+and explicit super, wrong keys and returns, and classes outside the bound.
+The source passed all 78 Jest suites (2,798 tests), TypeScript, syncpack,
+ESLint and Prettier checks. Original process cleanup warnings are retained.
+The original remote workflow and fresh installed consumers remain separate
+gates for this exact source and bundle.
 
 This remains a review branch while the required original remote CI and
 ordinary consumers are qualified for these exact sources. No upstream issue,

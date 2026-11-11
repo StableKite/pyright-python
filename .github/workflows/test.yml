@@ -23,13 +23,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, macos-14, windows-latest]
+        os: [ubuntu-22.04, macos-15, windows-latest]
         node: [14, 16, 18]
         python-version: ["3.7", "3.8", "3.9", "3.10", "3.11", "3.12"]
         exclude:
-          - os: macos-14
+          - os: macos-15
             node: 14
-          - os: macos-14
+          - os: macos-15
             python-version: "3.7"
 
     steps:
@@ -41,9 +41,36 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Set up Python ${{ matrix.python-version }}
+        if: runner.os != 'macOS' || !contains(fromJSON('["3.8", "3.9", "3.10"]'), matrix.python-version)
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+
+      - name: Build legacy Python natively on macOS ARM64
+        if: runner.os == 'macOS' && contains(fromJSON('["3.8", "3.9", "3.10"]'), matrix.python-version)
+        shell: bash
+        env:
+          PYENV_ROOT: ${{ runner.temp }}/stablekite-pyenv-legacy
+        run: |
+          test "$(uname -m)" = "arm64"
+          git clone --no-checkout https://github.com/pyenv/pyenv.git "$PYENV_ROOT"
+          git -C "$PYENV_ROOT" checkout --detach 03ffc48ef3cd33808899773df586f3cc7f74470a
+          test "$(git -C "$PYENV_ROOT" rev-parse HEAD)" = "03ffc48ef3cd33808899773df586f3cc7f74470a"
+          version=$("$PYENV_ROOT/bin/pyenv" latest -k "${{ matrix.python-version }}")
+          echo "legacy_python_source_version=$version"
+          shasum -a 256 "$PYENV_ROOT/plugins/python-build/share/python-build/$version"
+          "$PYENV_ROOT/bin/pyenv" install "$version"
+          echo "$PYENV_ROOT/versions/$version/bin" >> "$GITHUB_PATH"
+
+      - name: Verify native macOS runtime architecture and Python version
+        if: runner.os == 'macOS'
+        shell: bash
+        env:
+          EXPECTED_PYTHON_MINOR: ${{ matrix.python-version }}
+        run: |
+          test "$(uname -m)" = "arm64"
+          test "$(node -p 'process.arch')" = "arm64"
+          python -c 'import os,platform,sys; print(sys.version); print(sys.executable); print(platform.machine()); assert platform.machine() == "arm64"; assert "%d.%d" % sys.version_info[:2] == os.environ["EXPECTED_PYTHON_MINOR"]'
 
       - name: Install dependencies
         run: |

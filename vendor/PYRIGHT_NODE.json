@@ -1,16 +1,16 @@
 {
-  "archive": "pyright-1.1.414-stablekite.1.tgz",
-  "sha256": "3c50a3e8fd24503c7d8aeaa9ecf07d2c75a96473aeb02c63fe7741ddf0a69e54",
-  "bytes": 4227085,
-  "version": "1.1.414-stablekite.1",
+  "archive": "pyright-1.1.414-stablekite.2.tgz",
+  "sha256": "2f7edaf48692a60e0010494e3caf6154359b4575862cca9769772ed241a42853",
+  "bytes": 4227216,
+  "version": "1.1.414-stablekite.2",
   "source_repository": "https://github.com/StableKite/pyright.git",
-  "source_commit": "d4f2c177035373478e4f967317e23a2ad6bc98cd",
+  "source_commit": "bfc5661934c6f03b3a8c96cb3a1697fd297efa81",
   "upstream_repository": "https://github.com/microsoft/pyright.git",
   "upstream_tag": "1.1.414",
   "upstream_commit": "a28cce4077d87b80bead12de809f79845e39c8ba",
   "source_checker_engine_changed": false,
-  "patch_scope": "Only vendored ctypes.errcheck contract and genuine fork version metadata",
-  "original_local_validation": "Original frozen-lock install, style, all workspace typechecks,77Jest suites/2793tests, production prepack/npm pack passed on actual WindowsNode24.19.0/privatepnpm11.21.0. Original forceExit/warnings retained. No remoteCI/default/release claimed.",
+  "patch_scope": "Exact native ctypes byref owner and standard pickle reduction contracts, retaining every unrelated original fallback declaration. Pyright checker engine unchanged.",
+  "original_local_validation": "Original frozen-lock install, style/typechecks,77Jest suites/2793tests and production prepack/npm pack passed; original forceExit warning retained. No package index/default/SDK change.",
   "files": {
     "dist/typeshed-fallback/LICENSE": {
       "bytes": 12657,
@@ -30,7 +30,7 @@
     },
     "dist/pyright-internal.js": {
       "bytes": 3190185,
-      "sha256": "bef0aa2b64fa9341608bde29116bdb4cb6369f8ac64bcc013c92738595f931ca"
+      "sha256": "82abb5303ee2548f12e70e19db55b17b1a7bb0605a87c1bdfc4bbf657621f868"
     },
     "dist/pyright-langserver.js": {
       "bytes": 2007,
@@ -46,11 +46,11 @@
     },
     "package.json": {
       "bytes": 1159,
-      "sha256": "940eb8ac92bd1c83a00bba76dc73d795115eb05d1b660876210c4061436d01b8"
+      "sha256": "e50b8efed7d6a8abf169ddb7542119d845e8fafd588e30e832ef16ec14e193f1"
     },
     "dist/pyright-internal.js.map": {
-      "bytes": 2042528,
-      "sha256": "952475b18bd4c75a2bf738b0056de65a64f495d8c7759804fcf8a01931da995f"
+      "bytes": 2042688,
+      "sha256": "def3e87c80ae36f393039d7e482a298c1679400f7f91aea9bfe2c62aa6430bca"
     },
     "dist/pyright-langserver.js.map": {
       "bytes": 2814,
@@ -61,8 +61,8 @@
       "sha256": "b6dcd4040405ab8664ce16eef1cad8a4c102d29ebc66a673958ff00c005e2750"
     },
     "dist/vendor.js.map": {
-      "bytes": 734239,
-      "sha256": "b7a668fdd38ffc3d258081e0b24a448bd304875379e129d15b7320d388f691fa"
+      "bytes": 734249,
+      "sha256": "ba99cfd20ee48f4cb974a34c97bf46aa47d4b4a3ec25b20046dc45a62b6a5911"
     },
     "dist/typeshed-fallback/README.md": {
       "bytes": 6441,
@@ -2961,8 +2961,8 @@
       "sha256": "0f70debdc3f938bff50ba7e2d4505753e6323f1ea35d0ca7bc7865fc05411089"
     },
     "dist/typeshed-fallback/stdlib/_ctypes.pyi": {
-      "bytes": 17785,
-      "sha256": "de0a44432eeffb591c5f72dfaa964c8c959f26e773d75157519aeb8783e9f8f1"
+      "bytes": 17895,
+      "sha256": "4786238c9a9ffd5bb1240726f92a934e6f991fa30a16ce589788848730cbcb8b"
     },
     "dist/typeshed-fallback/stdlib/_curses_panel.pyi": {
       "bytes": 757,
@@ -3325,8 +3325,8 @@
       "sha256": "698b36934e9a94e2b73341ec0e3abbc68b80501d4b3129623a33465e495670de"
     },
     "dist/typeshed-fallback/stdlib/_pickle.pyi": {
-      "bytes": 3552,
-      "sha256": "819a75a5aa6f7deaf0ba4acb7da1b20fb1ee7c6dcfa7968c727a4e70d269fde2"
+      "bytes": 3759,
+      "sha256": "542dfc3649c74e6afb9bb9694563ff20cedd069525d4c7134daec6edf75a7f2f"
     },
     "dist/typeshed-fallback/stdlib/email/_policybase.pyi": {
       "bytes": 3331,

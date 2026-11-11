@@ -1,0 +1,21 @@
+name: Observe actual macOS 15 ARM64 runner capacity
+on:
+  push:
+    branches: ['stablekite/macos15-actual-capacity-v1']
+permissions:
+  contents: read
+jobs:
+  actual-native-runner:
+    runs-on: macos-15
+    steps:
+      - name: Observe the actual native platform
+        shell: bash
+        run: |
+          uname -a
+          sw_vers
+          test "$(uname -s)" = "Darwin"
+          test "$(uname -m)" = "arm64"
+          case "$(sw_vers -productVersion)" in
+            15.*) echo 'ACTUAL_MACOS15_ARM64_RUNNER_ACQUIRED';;
+            *) exit 1;;
+          esac

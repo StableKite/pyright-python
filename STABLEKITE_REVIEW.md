@@ -1,9 +1,9 @@
 # StableKite native type contract review
 
-This branch bundles the source-built Pyright `1.1.414-stablekite.3` engine
+This branch bundles the source-built Pyright `1.1.414-stablekite.5` engine
 with nominal metaclass class-object bounds and correct super binding, while
 preserving precise native ctypes and standard pickle contracts.
-The Python package version is `1.1.414+stablekite.3`.
+The Python package version is `1.1.414+stablekite.5`.
 
 The handler receives the converted Python result, the ctypes function,
 and a tuple of Python arguments. It can return an arbitrary Python object.
@@ -39,3 +39,8 @@ This remains a review branch while the required original remote CI and
 ordinary consumers are qualified for these exact sources. No upstream issue,
 pull request, package index release, default promotion, or Root SDK change
 is part of this review.
+
+
+Keyword-only override compatibility is additionally described in
+[STABLEKITE_KEYWORD_ONLY_OVERRIDES.md](STABLEKITE_KEYWORD_ONLY_OVERRIDES.md).
+This version is based on accepted3; unaccepted candidate4 remains separate.

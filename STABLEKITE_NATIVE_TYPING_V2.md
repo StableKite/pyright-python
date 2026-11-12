@@ -1,4 +1,4 @@
-Historical description of the preceding .2 release. Current .3 behavior and
+Historical description of the preceding .2 release. Current .5 behavior and
 provenance are described in STABLEKITE_REVIEW.md and vendor/PYRIGHT_NODE.json.
 
 This source bundles the exact source-built Pyright 1.1.414-stablekite.2 capsule.

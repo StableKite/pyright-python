@@ -1,9 +1,10 @@
 # StableKite native type contract review
 
-This branch bundles the source-built Pyright `1.1.414-stablekite.3` engine
-with nominal metaclass class-object bounds and correct super binding, while
+This branch bundles the source-built Pyright `1.1.414-stablekite.4` engine
+with compatible callable instance overrides, nominal metaclass class-object
+bounds and correct super binding, while
 preserving precise native ctypes and standard pickle contracts.
-The Python package version is `1.1.414+stablekite.3`.
+The Python package version is `1.1.414+stablekite.4`.
 
 The handler receives the converted Python result, the ctypes function,
 and a tuple of Python arguments. It can return an arbitrary Python object.
@@ -27,10 +28,11 @@ and rejects invalid custom getter binding. Broad Enum bounds that do not
 guarantee the custom metaclass remain rejected. The producer implementation
 returning super().__getitem__(key.upper()) is unchanged.
 
-All original Pyright tests and expectations are unchanged. Five new tests
-cover exact return types, inherited and incompatible owners, zero-argument
-and explicit super, wrong keys and returns, and classes outside the bound.
-The source passed all 78 Jest suites (2,798 tests), TypeScript, syncpack,
+All original Pyright tests and expectations are unchanged. The preceding
+five metaclass tests remain intact. Twenty-eight additional strict tests
+cover callable instance overrides, full parameter and result contracts,
+polymorphic Self, generics, overloads, and descriptor counterexamples.
+The source passed all 79 Jest suites (2,826 tests), TypeScript, syncpack,
 ESLint and Prettier checks. Original process cleanup warnings are retained.
 The original remote workflow and fresh installed consumers remain separate
 gates for this exact source and bundle.

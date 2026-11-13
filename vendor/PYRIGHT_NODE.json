@@ -1,17 +1,17 @@
 {
   "status": "PASS_ORIGINAL_PRODUCTION_NODE_PACKAGE_FROM_EXACT_REVIEWED_SOURCE",
-  "archive": "pyright-1.1.414-stablekite.5.tgz",
-  "sha256": "70caecbf1772ff6f26a915e64c5e012a8fe1416f53891aed6d6e6274039d2a39",
-  "bytes": 4227935,
-  "version": "1.1.414-stablekite.5",
+  "archive": "pyright-1.1.414-stablekite.6.tgz",
+  "sha256": "78bd0171978c3f5efbaebe97e9e48b9bf2af16eabf68a26e28b2aec878c8eb12",
+  "bytes": 4228560,
+  "version": "1.1.414-stablekite.6",
   "source_repository": "https://github.com/StableKite/pyright.git",
-  "source_commit": "c8698ccb7e22daa0c1a963c12f4cc7332fa284b7",
+  "source_commit": "8f587d5ba8d7b5e98973460348c18c57493f7593",
   "upstream_repository": "https://github.com/microsoft/pyright.git",
   "upstream_tag": "1.1.414",
   "upstream_commit": "a28cce4077d87b80bead12de809f79845e39c8ba",
   "source_checker_engine_changed": true,
-  "patch_scope": "Normative keyword-only base parameters implemented by standard parameters, retaining required/default/type and positional collision checks; all accepted StableKite3 ctypes, outparam and callable fixes remain unchanged. Unaccepted candidate4 is separate and remains HOLD.",
-  "original_local_validation": "79 suites / 2833 tests (2798 accepted plus35 added), full original source style and TypeScript gates passed; all1768 old test files byte-identical. Separate native and strict negative controls retained. CI remains separate.",
+  "patch_scope": "Constructor result controls: unrelated new/init applicability, abstract allocation after evaluated result, returned subclass initializer consistency and mixed-overload Self branches. All prior5 engine fixes and typeshed bytes retained. Earlier5 wrapper mac capacity HOLD remains separate and unchanged.",
+  "original_local_validation": "80 suites /2837 tests (2833 previous plus4 new), full original source style and TypeScript gates PASS. Old test samples and expectations exact. Only one authorized new fixture EOF LF removed with full AST/SHA ledger. Stock313/315t Windows/Linux runtime controls PASS. CI remains a separate original7 dispatch-disabled HOLD with HTTP422, not qualified.",
   "files": {
     "dist/typeshed-fallback/LICENSE": {
       "bytes": 12657,
@@ -30,8 +30,8 @@
       "sha256": "f200762078eb9880faf421a5b30f9ef3055b1d85c6f10780d75db4da8d8499f1"
     },
     "dist/pyright-internal.js": {
-      "bytes": 3191399,
-      "sha256": "d035a29f113fbc075f3c0d4586a0a493b26c77467f34e15a828878c1538f9e59"
+      "bytes": 3192412,
+      "sha256": "583868e3e580e045776e8852c076a986378332f46252204ddef8a18d53f2864b"
     },
     "dist/pyright-langserver.js": {
       "bytes": 2007,
@@ -47,11 +47,11 @@
     },
     "package.json": {
       "bytes": 1159,
-      "sha256": "dc4b132921d334d13493bb7a659803c3e30e13501f320925e6a5451c476b17da"
+      "sha256": "6335d280b15e0f548e09f49fe258acccddd1cf54187f2c810207f70361c52c69"
     },
     "dist/pyright-internal.js.map": {
-      "bytes": 2044284,
-      "sha256": "12df9ac41ca0513682339ae66efdc336d1e3570a2783c6d562f24d86e4688778"
+      "bytes": 2045663,
+      "sha256": "bea658424d4f45d272360a97e8ca13294c8afd6f88999aedcbb487b90f85053d"
     },
     "dist/pyright-langserver.js.map": {
       "bytes": 2814,
@@ -62,8 +62,8 @@
       "sha256": "b6dcd4040405ab8664ce16eef1cad8a4c102d29ebc66a673958ff00c005e2750"
     },
     "dist/vendor.js.map": {
-      "bytes": 734254,
-      "sha256": "01a96633cbee12524a06b3e50fc4e236ed185f1db44b4bd3f0c692e404405655"
+      "bytes": 734260,
+      "sha256": "7abcccca0427e13eea8cc6a7d3fbc0126ef134693f7de9f8100fb2093726db7a"
     },
     "dist/typeshed-fallback/README.md": {
       "bytes": 6441,

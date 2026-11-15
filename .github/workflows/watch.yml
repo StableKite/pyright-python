@@ -7,12 +7,12 @@ on:
 
 jobs:
   update_version:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Set up Python 3.9
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: 3.9
 
@@ -32,7 +32,7 @@ jobs:
       - name: Create Pull Request
         id: create-pr
         if: ${{ env.PYRIGHT_OUT_OF_DATE == '1' }}
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v7
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
         with:

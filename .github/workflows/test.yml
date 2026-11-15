@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - stablekite/unrelated-new-result-v6
     paths-ignore:
       - "*.md"
       - ".vscode/**"
@@ -11,6 +12,7 @@ on:
   pull_request:
     branches:
       - main
+      - stablekite/unrelated-new-result-v6
     paths-ignore:
       - "*.md"
       - ".vscode/**"
@@ -98,7 +100,7 @@ jobs:
 
   lint:
     name: lint
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       max-parallel: 2
       matrix:

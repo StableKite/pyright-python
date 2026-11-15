@@ -220,10 +220,8 @@ jobs:
 
       - name: Docker Build
         run: |
-          REF=$(echo $GITHUB_REF | sed 's/refs\/heads\///')
-          docker run python:3.11.4 /bin/sh -c "
-            pip install git+https://github.com/RobertCraigie/pyright-python.git@$REF && \
-            pyright --version
+          docker run -e GITHUB_REPOSITORY -e GITHUB_REF python:3.11.4 /bin/sh -c "
+            pip install git+https://github.com/${GITHUB_REPOSITORY}.git@${GITHUB_REF} && pyright --version
           "
 
   tests_status:

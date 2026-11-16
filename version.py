@@ -2,7 +2,7 @@ import re
 import argparse
 import fileinput
 
-from packaging import version
+from semver import Version
 
 
 def get_pyright_version() -> str:
@@ -14,8 +14,17 @@ def get_pyright_version() -> str:
         return match.group(1)
 
 
+def get_upstream_version(ver: str) -> Version:
+    parsed = Version.parse(ver)
+    if parsed.prerelease is not None and parsed.prerelease.split('.', 1)[0] == 'stablekite':
+        if re.fullmatch(r'stablekite\.[0-9]+', parsed.prerelease) is None:
+            raise ValueError(f'Invalid StableKite revision: {ver!r}')
+        parsed = parsed.replace(prerelease=None)
+    return parsed
+
+
 def compare(ver: str) -> bool:
-    return version.parse(get_pyright_version()) < version.parse(ver)
+    return get_upstream_version(get_pyright_version()) < Version.parse(ver)
 
 
 def set_pyright_ver(ver: str):

@@ -22,16 +22,25 @@ jobs:
           PYRIGHT_VERSION=$(npm view pyright version)
           echo "PYRIGHT_VERSION=$PYRIGHT_VERSION" >> $GITHUB_ENV
           echo "BRANCH_NAME=${PYRIGHT_VERSION//./-}" >> $GITHUB_ENV
-          echo "PYRIGHT_OUT_OF_DATE=$(python version.py --compare $PYRIGHT_VERSION)" >> $GITHUB_ENV
+          PYRIGHT_OUT_OF_DATE=$(python version.py --compare "$PYRIGHT_VERSION")
+          echo "PYRIGHT_OUT_OF_DATE=$PYRIGHT_OUT_OF_DATE" >> "$GITHUB_ENV"
+
+      - name: Require manual review for vendored engine updates
+        if: ${{ env.PYRIGHT_OUT_OF_DATE == '1' }}
+        run: |
+          if test -f vendor/PYRIGHT_NODE.json; then
+            echo "::error title=Vendored Pyright needs manual review::Upstream Pyright $PYRIGHT_VERSION is newer. Review and rebuild the vendored engine before updating this fork. Automatic version changes and PR creation are blocked."
+            exit 1
+          fi
 
       - name: Set pyright version
-        if: ${{ env.PYRIGHT_OUT_OF_DATE == '1' }}
+        if: ${{ success() && env.PYRIGHT_OUT_OF_DATE == '1' }}
         run: |
           python version.py --set ${{ env.PYRIGHT_VERSION }}
 
       - name: Create Pull Request
         id: create-pr
-        if: ${{ env.PYRIGHT_OUT_OF_DATE == '1' }}
+        if: ${{ success() && env.PYRIGHT_OUT_OF_DATE == '1' }}
         uses: peter-evans/create-pull-request@v3
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
@@ -51,7 +60,7 @@ jobs:
           draft: false
 
       - name: Enable auto-merge
-        if: ${{ env.PYRIGHT_OUT_OF_DATE == '1' && steps.create-pr.outputs.pull-request-number }}
+        if: ${{ success() && env.PYRIGHT_OUT_OF_DATE == '1' && steps.create-pr.outputs.pull-request-number }}
         env:
           GH_TOKEN: ${{ secrets.REPO_TOKEN }}
         run: |

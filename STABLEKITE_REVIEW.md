@@ -1,53 +1,15 @@
-# StableKite native type contract review
+# StableKite descriptor assignment review 7
 
-This branch bundles the source-built Pyright `1.1.414-stablekite.6` engine
-with nominal metaclass class-object bounds and correct super binding, while
-preserving precise native ctypes and standard pickle contracts.
-The Python package version is `1.1.414+stablekite.6`.
+This branch bundles source-built Pyright `1.1.414-stablekite.7`; the Python wrapper is `1.1.414+stablekite.7`. Engine source: `7cf26624313966738e0496741b6c7b4bb5332b43`, based on accepted engine6 `8f587d5ba8d7b5e98973460348c18c57493f7593`. Wrapper base: accepted6 `e15b94c28abd7392b8a040c783ea099e5db5bf3a`.
 
-The handler receives the converted Python result, the ctypes function,
-and a tuple of Python arguments. It can return an arbitrary Python object.
-Its callable shape remains checked. The default getter returns `None`;
-assigning `None` is rejected, while deleting the handler restores the default.
+An instance assignment shadows a non-data descriptor. Subsequent reads return the replacement directly, without binding a stored function again. Previously Pyright compared replacements with the raw descriptor, rejecting a compatible bound method while accepting an incompatible unbound method.
 
-The real `byref` result retains the concrete CData owner type through a
-read-only covariant owner property. Other ctypes converters retain the safe
-`object` default because their owners can be bytes or None. The standard
-pickle reduction includes its sixth state-setter argument and the
-`NotImplemented` result of `reducer_override`.
+The evaluator now checks replacements against the specialized instance `__get__` result and supplies this type for contextual inference. Data descriptors, delete-only descriptors, properties, class writes, frozen classes, slots, ClassVar and Final retain their separate restrictions. A non-data descriptor cannot be shadowed without an instance dictionary, including when it hides an inherited slot.
 
-`vendor/PYRIGHT_NODE.json` records the exact source commit, archive hash,
-and every bundled file hash. The normal setuptools build verifies this
-archive and includes its files in both wheel and sdist. Normal execution
-uses the bundled engine; no installed SDK file is patched.
+Local source checks passed 81 suites / 2840 tests, full TypeScript and full style checks. All original2837 cases remain. One explicitly reviewed false expectation changed: MemberAccess6 originally expected two errors for valid str replacements of Column[str]; it now expects zero. Its Python statements/declarations are AST-identical. Four separate strict negatives check incompatible int replacements of declared/inferred fields and invalid class writes, including exact diagnostic lines and rules. Every other original expectation is unchanged.
 
-The checker engine now validates known nominal metaclass owner bounds,
-looks up super through the metaclass MRO while preserving the class object,
-and rejects invalid custom getter binding. Broad Enum bounds that do not
-guarantee the custom metaclass remain rejected. The producer implementation
-returning super().__getitem__(key.upper()) is unchanged.
+All52 accepted external programs retain their complete diagnostic objects. New controls cover original bound/unbound reproductions, inherited generics, contextual lambdas, wrong returns/arguments, real setter/deleter boundaries, properties, ClassVar, Final, frozen instances and slots. Actual Python3.15t programs retain natural GIL-disabled state.
 
-All original Pyright tests and expectations are unchanged. Five new tests
-cover exact return types, inherited and incompatible owners, zero-argument
-and explicit super, wrong keys and returns, and classes outside the bound.
-The source passed all 78 Jest suites (2,798 tests), TypeScript, syncpack,
-ESLint and Prettier checks. Original process cleanup warnings are retained.
-The original remote workflow and fresh installed consumers remain separate
-gates for this exact source and bundle.
+All accepted6 engine fixes remain. All5410 bundled typeshed files match the accepted capsule byte for byte. The standard build helper verifies the production npm archive and every bundled file. Full original CI and installed-form qualification have independent receipts; this local source result alone does not establish their completion.
 
-This remains a review branch while the required original remote CI and
-ordinary consumers are qualified for these exact sources. No upstream issue,
-pull request, package index release, default promotion, or Root SDK change
-is part of this review.
-
-
-Keyword-only override compatibility is additionally described in
-[STABLEKITE_KEYWORD_ONLY_OVERRIDES.md](STABLEKITE_KEYWORD_ONLY_OVERRIDES.md).
-This version is based on accepted3; unaccepted candidate4 remains separate.
-
-
-Constructor result behavior and its separate qualification are described in
-[STABLEKITE_CONSTRUCTOR_RESULTS.md](STABLEKITE_CONSTRUCTOR_RESULTS.md).
-The earlier5 wrapper macOS capacity hold remains unchanged. This distinct6
-source also has an original-engine7 dispatch-disabled blocker; local package
-qualification does not establish full CI acceptance or default promotion.
+This remains a review branch. Existing defaults, accepted6 packages, package indexes and Root SDK remain unchanged until independent acceptance. Earlier engine changes remain documented in STABLEKITE_NATIVE_TYPING_V2.md, STABLEKITE_KEYWORD_ONLY_OVERRIDES.md and STABLEKITE_CONSTRUCTOR_RESULTS.md.

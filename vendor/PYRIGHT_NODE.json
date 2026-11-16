@@ -1,17 +1,17 @@
 {
   "status": "PASS_ORIGINAL_PRODUCTION_NODE_PACKAGE_FROM_EXACT_REVIEWED_SOURCE",
-  "archive": "pyright-1.1.414-stablekite.6.tgz",
-  "sha256": "78bd0171978c3f5efbaebe97e9e48b9bf2af16eabf68a26e28b2aec878c8eb12",
-  "bytes": 4228560,
-  "version": "1.1.414-stablekite.6",
+  "archive": "pyright-1.1.414-stablekite.7.tgz",
+  "sha256": "c562bbbe849127e96dd12dc216d8d33e0b071761b52b39f5809e9ab9d86ba89b",
+  "bytes": 4184309,
+  "version": "1.1.414-stablekite.7",
   "source_repository": "https://github.com/StableKite/pyright.git",
-  "source_commit": "8f587d5ba8d7b5e98973460348c18c57493f7593",
+  "source_commit": "7cf26624313966738e0496741b6c7b4bb5332b43",
   "upstream_repository": "https://github.com/microsoft/pyright.git",
   "upstream_tag": "1.1.414",
   "upstream_commit": "a28cce4077d87b80bead12de809f79845e39c8ba",
   "source_checker_engine_changed": true,
-  "patch_scope": "Constructor result controls: unrelated new/init applicability, abstract allocation after evaluated result, returned subclass initializer consistency and mixed-overload Self branches. All prior5 engine fixes and typeshed bytes retained. Earlier5 wrapper mac capacity HOLD remains separate and unchanged.",
-  "original_local_validation": "80 suites /2837 tests (2833 previous plus4 new), full original source style and TypeScript gates PASS. Old test samples and expectations exact. Only one authorized new fixture EOF LF removed with full AST/SHA ledger. Stock313/315t Windows/Linux runtime controls PASS. CI remains a separate original7 dispatch-disabled HOLD with HTTP422, not qualified.",
+  "patch_scope": "General non-data descriptor instance-write checking and contextual typing via specialized __get__ result. Data descriptors/properties/delete/class/frozen/slots/ClassVar/Final retained. All accepted6 production and typeshed fixes retained.",
+  "original_local_validation": "81 suites/2840tests PASS, full TypeScript/style PASS, all52 old full diagnostic objects exact. Original2837cases retained; only explicitly reviewed MemberAccess6 false2errors corrected to0 with PythonAST-equal statements and4 exact strict int/class negative controls. Runtime315t original bound/unbound, inherited generics and real slots/property/frozen controls PASS without GIL forcing. Full original CI and installed-form qualification remain separate pending gates.",
   "files": {
     "dist/typeshed-fallback/LICENSE": {
       "bytes": 12657,
@@ -30,8 +30,8 @@
       "sha256": "f200762078eb9880faf421a5b30f9ef3055b1d85c6f10780d75db4da8d8499f1"
     },
     "dist/pyright-internal.js": {
-      "bytes": 3192412,
-      "sha256": "583868e3e580e045776e8852c076a986378332f46252204ddef8a18d53f2864b"
+      "bytes": 3193127,
+      "sha256": "c52a4e623e70ded83cf1d46104c1fad56f130ca9f812317e095f3b7e8f3adde3"
     },
     "dist/pyright-langserver.js": {
       "bytes": 2007,
@@ -46,12 +46,12 @@
       "sha256": "2c27103303b09d0ecdb120b56710cd939822e23907809094583c472098c785da"
     },
     "package.json": {
-      "bytes": 1159,
-      "sha256": "6335d280b15e0f548e09f49fe258acccddd1cf54187f2c810207f70361c52c69"
+      "bytes": 1407,
+      "sha256": "8dd5dee509f4e4f1d2e3162568ead48f434b19437f4a5a6031fd8de3b836b824"
     },
     "dist/pyright-internal.js.map": {
-      "bytes": 2045663,
-      "sha256": "bea658424d4f45d272360a97e8ca13294c8afd6f88999aedcbb487b90f85053d"
+      "bytes": 2046327,
+      "sha256": "d60cefaf4c9e6e176ac2c39e15200be4bffd50ffc9d2b0b0dc30a2a9e4c60b2f"
     },
     "dist/pyright-langserver.js.map": {
       "bytes": 2814,
@@ -62,8 +62,8 @@
       "sha256": "b6dcd4040405ab8664ce16eef1cad8a4c102d29ebc66a673958ff00c005e2750"
     },
     "dist/vendor.js.map": {
-      "bytes": 734260,
-      "sha256": "7abcccca0427e13eea8cc6a7d3fbc0126ef134693f7de9f8100fb2093726db7a"
+      "bytes": 734237,
+      "sha256": "df7698ee2b535f9abb348d01511910851cfae861a350c565fea3d3c315d3d620"
     },
     "dist/typeshed-fallback/README.md": {
       "bytes": 6441,

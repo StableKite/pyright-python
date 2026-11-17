@@ -1,4 +1,4 @@
-name: 'StableKite descriptors original wrapper checks v7'
+name: 'StableKite instance callable contracts original wrapper checks v8'
 on:
   workflow_dispatch:
 
@@ -21,13 +21,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: e5267944176afc3644d2aa82eec637a7c77c4292
+          ref: 95357ceb3bcbabb4af01ffcb1141cb551d29929d
       - name: Verify immutable reviewed source
         shell: bash
         run: |
           actual=$(git rev-parse HEAD)
           echo "reviewed_source=$actual"
-          test "$actual" = "e5267944176afc3644d2aa82eec637a7c77c4292"
+          test "$actual" = "95357ceb3bcbabb4af01ffcb1141cb551d29929d"
 
       # TODO: ensure that pyright-python uses this node version
       - uses: actions/setup-node@v2
@@ -101,13 +101,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: e5267944176afc3644d2aa82eec637a7c77c4292
+          ref: 95357ceb3bcbabb4af01ffcb1141cb551d29929d
       - name: Verify immutable reviewed source
         shell: bash
         run: |
           actual=$(git rev-parse HEAD)
           echo "reviewed_source=$actual"
-          test "$actual" = "e5267944176afc3644d2aa82eec637a7c77c4292"
+          test "$actual" = "95357ceb3bcbabb4af01ffcb1141cb551d29929d"
 
       - name: Build legacy lint Python natively on Ubuntu
         shell: bash
@@ -161,13 +161,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: e5267944176afc3644d2aa82eec637a7c77c4292
+          ref: 95357ceb3bcbabb4af01ffcb1141cb551d29929d
       - name: Verify immutable reviewed source
         shell: bash
         run: |
           actual=$(git rev-parse HEAD)
           echo "reviewed_source=$actual"
-          test "$actual" = "e5267944176afc3644d2aa82eec637a7c77c4292"
+          test "$actual" = "95357ceb3bcbabb4af01ffcb1141cb551d29929d"
 
       # https://github.com/docker/build-push-action/
       - name: Set up QEMU
@@ -203,13 +203,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: e5267944176afc3644d2aa82eec637a7c77c4292
+          ref: 95357ceb3bcbabb4af01ffcb1141cb551d29929d
       - name: Verify immutable reviewed source
         shell: bash
         run: |
           actual=$(git rev-parse HEAD)
           echo "reviewed_source=$actual"
-          test "$actual" = "e5267944176afc3644d2aa82eec637a7c77c4292"
+          test "$actual" = "95357ceb3bcbabb4af01ffcb1141cb551d29929d"
 
       - name: Install dependencies
         run: |
@@ -234,17 +234,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: e5267944176afc3644d2aa82eec637a7c77c4292
+          ref: 95357ceb3bcbabb4af01ffcb1141cb551d29929d
       - name: Verify immutable reviewed source
         shell: bash
         run: |
           actual=$(git rev-parse HEAD)
           echo "reviewed_source=$actual"
-          test "$actual" = "e5267944176afc3644d2aa82eec637a7c77c4292"
+          test "$actual" = "95357ceb3bcbabb4af01ffcb1141cb551d29929d"
 
       - name: Docker Build
         run: |
-          REF=e5267944176afc3644d2aa82eec637a7c77c4292
+          REF=95357ceb3bcbabb4af01ffcb1141cb551d29929d
           docker run python:3.11.4 /bin/sh -c "
             pip install git+https://github.com/StableKite/pyright-python.git@$REF && \
             pyright --version

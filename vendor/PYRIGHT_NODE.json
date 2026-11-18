@@ -1,19 +1,18 @@
 {
   "status": "SOURCE_BUILT_PRODUCTION_NODE_PACKAGE_WITH_EXACT_MEMBER_MANIFEST",
-  "archive": "pyright-1.1.414-stablekite.8.tgz",
-  "sha256": "56d7bf790790ded480af00f37366c7f04cbd5586fa39300cfae00db82854b923",
-  "bytes": 4233127,
-  "version": "1.1.414-stablekite.8",
+  "archive": "pyright-1.1.414-stablekite.9.tgz",
+  "sha256": "a7c1fc8472a0f9c9283ce3222c239d199652037e84068c7e6d641af5dff411d8",
+  "bytes": 4233320,
+  "version": "1.1.414-stablekite.9",
   "source_repository": "https://github.com/StableKite/pyright.git",
-  "source_commit": "8beb6cc5d33a4128761d7c461387d7a7a761fe2a",
+  "source_commit": "ebd296cc6949431be97cd31a889644dc66039860",
   "upstream_repository": "https://github.com/microsoft/pyright.git",
   "upstream_tag": "1.1.414",
   "upstream_commit": "a28cce4077d87b80bead12de809f79845e39c8ba",
   "source_checker_engine_changed": true,
-  "patch_scope": "Explicit writable instance callable contracts retain separate class-function lookup and invariant overrides; generic custom-metaclass receivers require the declaring metaclass. Earlier accepted7 controls and typeshed retained.",
-  "typecheck_and_style": "Original complete TypeScript, ESLint, syncpack and Prettier pass; original old tests unchanged.",
-  "engine_original_CI": "https://github.com/StableKite/pyright/actions/runs/44159978404",
-  "qualification": "Full engine CI and installed-consumer qualification are recorded separately from this package integrity manifest.",
+  "patch_scope": "Check safe narrow additions to overloaded overrides, complete base coverage, and overload ordering.",
+  "typecheck_and_style": "TypeScript, ESLint, syncpack and Prettier checked on the engine source.",
+  "qualification": "Installed-consumer qualification is recorded separately from this integrity manifest.",
   "files": {
     "dist/typeshed-fallback/LICENSE": {
       "bytes": 12657,
@@ -32,8 +31,8 @@
       "sha256": "f200762078eb9880faf421a5b30f9ef3055b1d85c6f10780d75db4da8d8499f1"
     },
     "dist/pyright-internal.js": {
-      "bytes": 3201561,
-      "sha256": "05a0169d1dc82e84bf592aab40886b175ec65fe1aa676a22d72c33c8652a19d4"
+      "bytes": 3201778,
+      "sha256": "dfde5fa6ea2724c36b2bbc10983418aa8cda6e0d524d10c63dde63520559454e"
     },
     "dist/pyright-langserver.js": {
       "bytes": 2007,
@@ -49,11 +48,11 @@
     },
     "package.json": {
       "bytes": 1159,
-      "sha256": "eaa00138405e7e6442e6460340e1045dd6b9c642192659e48a63285f5f6cafac"
+      "sha256": "d6f7dd84ecb95a13a46e28da814a4319591300e5453bf566c61a9ecb0750ac0c"
     },
     "dist/pyright-internal.js.map": {
-      "bytes": 2056008,
-      "sha256": "78c8aad871a88b89f7e0275ac49a078aae6a8b2c5a49c1ce5ab4bedabc52343c"
+      "bytes": 2056482,
+      "sha256": "5575403c1375bc159aaa77e67c3ad491faddf0c52d3d85e44a00a2ec12c09a06"
     },
     "dist/pyright-langserver.js.map": {
       "bytes": 2814,
@@ -64,8 +63,8 @@
       "sha256": "b6dcd4040405ab8664ce16eef1cad8a4c102d29ebc66a673958ff00c005e2750"
     },
     "dist/vendor.js.map": {
-      "bytes": 734241,
-      "sha256": "6cf400e5b2ad1c3d84d8c8b77debe89ede2916d03896b5960c77a21cf8fb5eb9"
+      "bytes": 734249,
+      "sha256": "680a06434bffcc29f13ff4e0d6e3c9f8e1f430687004bddb8aef8efcb191fd0d"
     },
     "dist/typeshed-fallback/README.md": {
       "bytes": 6441,
